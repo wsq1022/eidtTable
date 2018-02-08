@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/app.css">
+    <script src="js/vue.js"></script>
+</head>
+<body>
+
+<div class="container">
+   <table class="table table-bordered">
+       <tr>
+           <th>
+               id
+           </th>
+           <th>
+               姓名
+           </th>
+           <th>
+               性别
+           </th>
+           <th>
+               年龄
+           </th>
+           <th>
+               操作
+           </th>
+       </tr>
+       <tr v-for="item in datas">
+           <td>
+               {{item.id}}
+           </td>
+           <td>
+              <span v-show="item.nameshow" @dblclick="changeShow(item,'name')">{{item.name}}</span>
+               <span v-show="!item.nameshow">
+                   <input type="text" v-model="item.name" @blur="changeShow(item,'name')" v-focus>
+               </span>
+           </td>
+           <td>
+               <span v-show="item.sexshow" @dblclick="changeShow(item,'sex')">{{item.sex}}</span>
+               <span v-show="!item.sexshow">
+                   <input type="text" v-model="item.sex" @blur="changeShow(item,'sex')" v-focus>
+               </span>
+           </td>
+           <td>
+               <span v-show="item.ageshow" @dblclick="changeShow(item,'age')">{{item.age}}</span>
+               <span v-show="!item.ageshow">
+                   <input type="text" v-model="item.age" @blur="changeShow(item,'age')" v-focus>
+               </span>
+           </td>
+           <td>
+               <span @click="del(item.id)">删除</span>
+           </td>
+       </tr>
+   </table>
+</div>
+<script src="js/app.js"></script>
+</body>
+</html>
